@@ -1,0 +1,141 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <head>
+        <button id="btn", onclick="connect()">Click </button>
+    </head>
+
+   
+   
+   
+   
+   
+    <script src="first.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Web App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: none;
+        background-color: #032902;
+    }
+
+    #connect-button {
+        float: right;
+        margin-top: -17px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #connect-button:hover {
+        background-color: #82bf85;
+    }
+
+    #feedback-form {
+        margin-top: 30px;
+        width: 50%;
+        float: left;
+    }
+
+    #user-input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    #submit-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        margin-top: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #submit-button:hover {
+        background-color: #45a049;
+    }
+
+    #feedback-list {
+        float: left;
+        margin-top: 30px;
+        width: 50%;
+    }
+
+    .feedback-item {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <button id="connect-button", onclick = "connect()">Connect</button>
+
+    <form id="feedback-form">
+        <textarea id="user-input" rows="4" placeholder="Enter your feedback"></textarea>
+        <button type="submit" id="submit-button">Submit</button>
+    </form>
+    <div id="feedback-list"></div>
+</div>
+
+<script>
+    const feedbackForm = document.getElementById('feedback-form');
+    const feedbackList = document.getElementById('feedback-list');
+
+    async function connect() {
+    if (typeof window.ethereum !== 'undefined') {
+        ethereum.request({ method: 'eth_requestAccounts' });
+    }
+}
+
+
+
+    feedbackForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const userInput = document.getElementById('user-input').value.trim();
+
+        if (userInput !== '') {
+            const feedbackItem = document.createElement('div');
+            feedbackItem.classList.add('feedback-item');
+            feedbackItem.textContent = userInput;
+            feedbackList.appendChild(feedbackItem);
+
+            // Clear input after submission
+            document.getElementById('user-input').value = '';
+        }
+    });
+</script>
+</body>
+</html>
