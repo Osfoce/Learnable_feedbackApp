@@ -8,7 +8,11 @@
         <button id="btn", onclick="connect()">Click </button>
     </head>
 
-   
+   function getFeedback (uint _ndex) public view returns (address, string memory, uint256) {
+    Message memory item = messages[_ndex];
+
+    return(item.author, itemcontent, item.timestamp);
+
    
    
    
@@ -104,38 +108,11 @@
 
     <form id="feedback-form">
         <textarea id="user-input" rows="4" placeholder="Enter your feedback"></textarea>
-        <button type="submit" id="submit-button">Submit</button>
+        <button type="submit" id="submit-button", onclick="submitted()">Submit</button>
     </form>
     <div id="feedback-list"></div>
 </div>
 
-<script>
-    const feedbackForm = document.getElementById('feedback-form');
-    const feedbackList = document.getElementById('feedback-list');
-
-    async function connect() {
-    if (typeof window.ethereum !== 'undefined') {
-        ethereum.request({ method: 'eth_requestAccounts' });
-    }
-}
-
-
-
-    feedbackForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const userInput = document.getElementById('user-input').value.trim();
-
-        if (userInput !== '') {
-            const feedbackItem = document.createElement('div');
-            feedbackItem.classList.add('feedback-item');
-            feedbackItem.textContent = userInput;
-            feedbackList.appendChild(feedbackItem);
-
-            // Clear input after submission
-            document.getElementById('user-input').value = '';
-        }
-    });
-</script>
+<script src="run.js"></script>
 </body>
 </html>
