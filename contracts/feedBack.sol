@@ -9,8 +9,18 @@ contract feedBack{
  }
 
  string message = "Hello am a contract!";
+  uint count;
 
- function getMessage() public view returns(string memory) {
+ function incrementCount() public {
+    count ++;
+ }
+
+ function getTotalCount() public view returns(uint){
+    console.log(count);
+    return count;
+ }
+
+function getMessage() public view returns(string memory) {
     return message;
  }
 }

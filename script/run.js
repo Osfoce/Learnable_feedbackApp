@@ -2,7 +2,7 @@ const main = async () => {
 
     const helloContractFactory = await hre.ethers.getContractFactory("feedBack");
     const helloContract = await helloContractFactory.deploy();
-    await helloContract.deployed();
+    await helloContract.waitForDeployment();
    
     const test = await feedbackContract.getMessage();
     console.log(message);
