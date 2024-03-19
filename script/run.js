@@ -24,19 +24,18 @@ const main = async () => {
    
    
    
+const submitted = () => console.log("submitted")
+const clicked = () => console.log("clicked")
    
-   const submitted = () => console.log("submitted")
-   const clicked = () => console.log("clicked")
+const feedbackForm = document.getElementById('feedback-form');
+const feedbackList = document.getElementById('feedback-list');
    
-       const feedbackForm = document.getElementById('feedback-form');
-       const feedbackList = document.getElementById('feedback-list');
-   
-       async function connect() {
-       if (typeof window.we3 !== 'undefined') {
-           ethereum.request({ method: 'eth_requestAccounts' });
-       }
+async function connect() {
+    if (typeof window.we3 !== 'undefined') {
+        ethereum.request({ method: 'eth_requestAccounts' });
+    }
        alert('Download Metamask');
-   }
+}
    
    
    
